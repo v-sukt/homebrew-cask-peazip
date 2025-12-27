@@ -4,13 +4,12 @@ cask "peazip" do
   # Use :no_check to tell Homebrew that it can't know the checksum in advance, and so it should not try to validate the checksum of the downloaded archive.
   sha256 :no_check
 
-  desc "trying to get the latest release of peazip from it's GitHub page" 
   homepage "https://github.com/v-sukt/homebrew-cask-peazip"
   # If there's no arguments and only a block, Homebrew will wait to run the block until it actually needs the URL to download the file at install-time.
   url do
     # Homebrew has a built-in GitHub API client, conveniently able to provide the list of releases, converted from JSON to Ruby hashes.
-    assets = GitHub.get_release("peazip", "PeaZip", "latest").fetch("assets")
-    latest = assets.find{|a| a["name"] == "DARWIN.aarch64.dmg" }.fetch("url")
+    assets = GitHub.get_release("peazip", "PeaZip", "10.8.0").fetch("assets")
+    latest = assets.find{|a| a["name"] == "aarch64.dmg" }.fetch("url")
     # The return value must match the arguments for the non-block version of `url`, first a URL, and then an options hash. The `header` option can take an array if you need to provide more than one header.
     [latest, header: [
       # The GitHub API will return the binary content of an asset instead of JSON data about that asset if you set the Accept header to application/octet-stream.
@@ -19,8 +18,11 @@ cask "peazip" do
       "Authorization: bearer #{GitHub::API.credentials}"
     ]]
   end
+  #desc "trying to get the latest release of peazip from it's GitHub page" 
+  desc "#{url}"
+  #url "https://github.com/peazip/PeaZip/releases/download/latest/peazip-#{version}.DARWIN.aarch64.dmg"
 
-  app "peazip.app"
+  app "peazip.app", target "PeaZip.app"
   caveats <<~EOS
     1. You may need to run the following command to use PeaZip.app (*):
 
