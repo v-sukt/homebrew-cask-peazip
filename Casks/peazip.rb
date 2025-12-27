@@ -24,6 +24,7 @@ cask "peazip" do
 
   app "peazip.app", target "PeaZip.app"
   caveats <<~EOS
+  "#{url}"
     1. You may need to run the following command to use PeaZip.app (*):
 
       xattr -dr com.apple.quarantine /Applications/peazip.app
