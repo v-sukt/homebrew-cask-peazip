@@ -5,7 +5,7 @@ cask "peazip" do
   sha256 :no_check
 
   desc "trying to get the latest release of peazip from it's GitHub page" 
-  hompage "https://github.com/v-sukt/homebrew-cask-peazip"
+  homepage "https://github.com/v-sukt/homebrew-cask-peazip"
   # If there's no arguments and only a block, Homebrew will wait to run the block until it actually needs the URL to download the file at install-time.
   url do
     # Homebrew has a built-in GitHub API client, conveniently able to provide the list of releases, converted from JSON to Ruby hashes.
