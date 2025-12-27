@@ -8,7 +8,7 @@ cask "peazip" do
   # If there's no arguments and only a block, Homebrew will wait to run the block until it actually needs the URL to download the file at install-time.
   url do
     # Homebrew has a built-in GitHub API client, conveniently able to provide the list of releases, converted from JSON to Ruby hashes.
-    assets = GitHub.get_release("peazip", "PeaZip", "10.8.0").fetch("assets")
+    assets = GitHub.get_release("username", "reponame", "tagname").fetch("assets")
     latest = assets.find{|a| a["name"] == "aarch64.dmg" }.fetch("url")
     # The return value must match the arguments for the non-block version of `url`, first a URL, and then an options hash. The `header` option can take an array if you need to provide more than one header.
     [latest, header: [
