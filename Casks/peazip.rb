@@ -22,7 +22,7 @@ cask "peazip" do
   desc "#{url}"
   #url "https://github.com/peazip/PeaZip/releases/download/latest/peazip-#{version}.DARWIN.aarch64.dmg"
 
-  app "peazip.app", target "PeaZip.app"
+  app "PeaZip.app"
   caveats <<~EOS
   "#{url}"
     1. You may need to run the following command to use PeaZip.app (*):
